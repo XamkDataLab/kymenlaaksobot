@@ -16,7 +16,7 @@ available_prompts = [
 
 # Dropdown for the user to select a system prompt
 selected_prompt_name, selected_prompt_content = st.selectbox(
-    "Select a System Prompt",
+    "Valitse asiantuntija. Asiantuntijat 1 ja 2 ovat keskenään eri linjoilla ja asiantuntija 3 on salaliittoteoreetikko",
     options=available_prompts,
     format_func=lambda option: option[0]  # This will display the name part only in the dropdown
 )

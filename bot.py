@@ -9,7 +9,7 @@ openai.api_key = st.secrets["apikey"]
 
 # Initialize available system prompts list
 available_prompts = [
-    ("Ehkä järkevin asiantuntija", system_prompt1),
+    ("Epäkohtelias litium-asiantuntija", system_prompt1),
     ("Tamperelainen asiantuntija", system_prompt2),
     ("Salaliittoasiantuntija", system_prompt3)
 ]

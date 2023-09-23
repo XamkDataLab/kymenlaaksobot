@@ -8,12 +8,10 @@ st.title("Ulkopolitiikkabot")
 openai.api_key = st.secrets["apikey"]
 
 # Initialize available system prompts list
-# (You can add more prompts as per your requirements)
 available_prompts = [
     ("Asiantuntija 1", system_prompt1),
     ("Asiantuntija 2", system_prompt2),
     ("Asiantuntija 3", system_prompt3)
-    # Add more prompts if needed
 ]
 
 # Dropdown for the user to select a system prompt
@@ -25,7 +23,7 @@ selected_prompt_name, selected_prompt_content = st.selectbox(
 
 # Set a default model
 if "openai_model" not in st.session_state:
-    st.session_state["openai_model"] = "gpt-4" #"gpt-3.5-turbo"
+    st.session_state["openai_model"] = "gpt-4"
 
 # Initialize chat history
 if "messages" not in st.session_state:
@@ -49,6 +47,8 @@ if prompt := st.chat_input("Keskustele ulkopolitiikasta"):
     # Display assistant response in chat message container
     with st.chat_message("assistant"):
         message_placeholder = st.empty()
+        message_placeholder.markdown("...typing...▌")  # Displaying a waiting message
+
         full_response = ""
         for response in openai.ChatCompletion.create(
             model=st.session_state["openai_model"],
@@ -60,7 +60,10 @@ if prompt := st.chat_input("Keskustele ulkopolitiikasta"):
         ):
             if response.choices[0].delta.get("role") != "system":
                 full_response += response.choices[0].delta.get("content", "")
+
+        # Update the placeholder with the actual response
         message_placeholder.markdown(full_response + "▌")
         message_placeholder.markdown(full_response)
-    st.session_state.messages.append({"role": "assistant", "content": full_response})
+        
+        st.session_state.messages.append({"role": "assistant", "content": full_response})
 

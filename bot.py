@@ -10,8 +10,9 @@ openai.api_key = st.secrets["apikey"]
 # Initialize available system prompts list
 # (You can add more prompts as per your requirements)
 available_prompts = [
-    ("System Prompt 1", system_prompt1),
-    ("System Prompt 2", system_prompt2),
+    ("Asiantuntija 1", system_prompt1),
+    ("Asiantuntija 2", system_prompt2),
+    ("Asiantuntija 3", system_prompt3)
     # Add more prompts if needed
 ]
 
@@ -24,7 +25,7 @@ selected_prompt_name, selected_prompt_content = st.selectbox(
 
 # Set a default model
 if "openai_model" not in st.session_state:
-    st.session_state["openai_model"] = "gpt-3.5-turbo"
+    st.session_state["openai_model"] = "gpt-4" #"gpt-3.5-turbo"
 
 # Initialize chat history
 if "messages" not in st.session_state:

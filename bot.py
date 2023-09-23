@@ -47,7 +47,7 @@ if prompt := st.chat_input("Keskustele ulkopolitiikasta"):
     # Display assistant response in chat message container
     with st.chat_message("assistant"):
         message_placeholder = st.empty()
-        message_placeholder.markdown("...typing...▌")  # Displaying a waiting message
+        message_placeholder.markdown("...asiantuntija kirjoittaa...▌")  # Displaying a waiting message
 
         full_response = ""
         for response in openai.ChatCompletion.create(

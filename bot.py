@@ -7,8 +7,8 @@ st.title("Kysy ulkopolitiikan asiantuntijalta")
 openai.api_key = st.secrets["apikey"]
 
 available_prompts = [
-    ("Epäkohtelias litium-asiantuntija", system_prompt1),
     ("Tamperelainen asiantuntija", system_prompt2),
+    ("Epäkohtelias litium-asiantuntija", system_prompt1),
     ("Salaliittoasiantuntija", system_prompt3)
 ]
 

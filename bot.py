@@ -5,7 +5,7 @@ from prompts import *
 st.title("Ulkopolitiikkabot")
 
 # Set OpenAI API key from Streamlit secrets
-openai.api_key = st.secrets["OPENAI_API_KEY"]
+openai.api_key = st.secrets["apikey"]
 
 # Initialize available system prompts list
 # (You can add more prompts as per your requirements)

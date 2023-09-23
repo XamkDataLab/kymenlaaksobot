@@ -5,9 +5,22 @@ from prompts import *
 st.title("Ulkopolitiikkabot")
 
 # Set OpenAI API key from Streamlit secrets
-openai.api_key = st.secrets["apikey"]
+openai.api_key = st.secrets["OPENAI_API_KEY"]
 
-#st.write(openai.api_key)
+# Initialize available system prompts list
+# (You can add more prompts as per your requirements)
+available_prompts = [
+    ("System Prompt 1", system_prompt1),
+    ("System Prompt 2", system_prompt2),
+    # Add more prompts if needed
+]
+
+# Dropdown for the user to select a system prompt
+selected_prompt_name, selected_prompt_content = st.selectbox(
+    "Select a System Prompt",
+    options=available_prompts,
+    format_func=lambda option: option[0]  # This will display the name part only in the dropdown
+)
 
 # Set a default model
 if "openai_model" not in st.session_state:
@@ -25,8 +38,8 @@ for message in st.session_state.messages:
 
 # Accept user input
 if prompt := st.chat_input("Keskustele ulkopolitiikasta"):
-    # Add user message to chat history
-    st.session_state.messages.append({"role": "system", "content": system_prompt})
+    # Add user message to chat history with the selected system prompt
+    st.session_state.messages.append({"role": "system", "content": selected_prompt_content})
     st.session_state.messages.append({"role": "user", "content": prompt})
 
     with st.chat_message("user"):
@@ -49,3 +62,4 @@ if prompt := st.chat_input("Keskustele ulkopolitiikasta"):
         message_placeholder.markdown(full_response + "▌")
         message_placeholder.markdown(full_response)
     st.session_state.messages.append({"role": "assistant", "content": full_response})
+

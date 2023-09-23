@@ -9,14 +9,14 @@ openai.api_key = st.secrets["apikey"]
 
 # Initialize available system prompts list
 available_prompts = [
-    ("Asiantuntija 1", system_prompt1),
-    ("Asiantuntija 2", system_prompt2),
-    ("Asiantuntija 3", system_prompt3)
+    ("Ehkä järkevin asiantuntija", system_prompt1),
+    ("Tamperelainen asiantuntija", system_prompt2),
+    ("Salaliittoasiantuntija", system_prompt3)
 ]
 
 # Dropdown for the user to select a system prompt
 selected_prompt_name, selected_prompt_content = st.selectbox(
-    "Valitse asiantuntija. Asiantuntijat 1 ja 2 ovat keskenään eri linjoilla ja asiantuntija 3 on salaliittoteoreetikko",
+    "Valitse asiantuntija",
     options=available_prompts,
     format_func=lambda option: option[0]  # This will display the name part only in the dropdown
 )

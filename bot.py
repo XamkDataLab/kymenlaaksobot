@@ -3,7 +3,6 @@ import streamlit as st
 from prompts import *
 
 st.title("Kysy Kaakkois-Suomen ammattikorkeakouusta")
-st.write(system_prompt1)
 openai.api_key = st.secrets["apikey"]
 
 available_prompts = [

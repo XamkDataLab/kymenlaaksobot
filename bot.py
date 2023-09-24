@@ -7,8 +7,8 @@ st.title("Kysy Kaakkois-Suomen ammattikorkeakouusta")
 openai.api_key = st.secrets["apikey"]
 
 available_prompts = [
-    ("Opas Tamperelaisille", system_prompt2),
-    ("Opas Savolaisille", system_prompt1),
+    ("Opas Tamperelaisille", system_prompt1),
+    ("Opas Savolaisille", system_prompt2),
     ("Opas Helsinkiläisille", system_prompt3)
 ]
 
@@ -31,7 +31,7 @@ for message in st.session_state.messages:
             st.markdown(message["content"])
 
 
-if prompt := st.chat_input("Kysy ulkopolitiikasta"):
+if prompt := st.chat_input("Kysy xamkista"):
 
     st.session_state.messages.append({"role": "system", "content": selected_prompt_content})
     st.session_state.messages.append({"role": "user", "content": prompt})

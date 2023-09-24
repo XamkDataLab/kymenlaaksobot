@@ -2,14 +2,14 @@ import openai
 import streamlit as st
 from prompts import *
 
-st.title("Kysy ulkopolitiikan asiantuntijalta")
+st.title("Kysy Kaakkois-Suomen ammattikorkeakouusta")
 
 openai.api_key = st.secrets["apikey"]
 
 available_prompts = [
-    ("Tamperelainen asiantuntija", system_prompt2),
-    ("Epäkohtelias litium-asiantuntija", system_prompt1),
-    ("Salaliittoasiantuntija", system_prompt3)
+    ("Opas Tamperelaisille", system_prompt2),
+    ("Opas Savolaisille", system_prompt1),
+    ("Opas Helsinkiläisille", system_prompt3)
 ]
 
 selected_prompt_name, selected_prompt_content = st.selectbox(

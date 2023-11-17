@@ -4,11 +4,11 @@ from prompts import *
 
 client = OpenAI(api_key=st.secrets["apikey"])
 
-st.title("ManseBot")
+st.title("KurssiBot")
 
 # Set a default model
 if "openai_model" not in st.session_state:
-    st.session_state["openai_model"] = "gpt-3.5-turbo"
+    st.session_state["openai_model"] = "gpt-3.5-turbo-1106"
 
 # Initialize chat history
 if "messages" not in st.session_state:

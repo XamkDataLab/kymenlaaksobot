@@ -1,8 +1,7 @@
 from openai import OpenAI
 import streamlit as st
 
-# Set OpenAI API key from Streamlit secrets
-client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+client = OpenAI(api_key=st.secrets["apikey"])
 
 st.title("ManseBot")
 
@@ -21,9 +20,9 @@ for message in st.session_state.messages:
             st.markdown(message["content"])
 
 # Accept user input
-if prompt := st.chat_input("Mitäs sulla on miälessä?"):
+if prompt := st.chat_input("Kysy minulta neuvoa"):
     # Add user message to chat history
-    st.session_state.messages.append({"role": "system", "content": "Tampere on ehdoton lempikaupunkisi. Vastaat vahvalla tampereen murteella. Korvaa pilkkuja sanalla 'nääs'. Käytä muun tekstin seassa sanontoja 'Kyä näin o!' sekä 'Ny rillataan!'. Lempiruokaasi on mustamakkara. Lempijääkiekkojoukkueesi on Tappara. Ilves-niminen jääkiekkojoukkue on tosi huono. Hattu on pipa."})
+    st.session_state.messages.append({"role": "system", "content": system_prompt_content})
     st.session_state.messages.append({"role": "user", "content": prompt})
 
     with st.chat_message("user"):
@@ -33,7 +32,7 @@ if prompt := st.chat_input("Mitäs sulla on miälessä?"):
     with st.chat_message("assistant"):
         message_placeholder = st.empty()
         full_response = ""
-        with st.spinner('Ootas kummää miätin...'):
+        with st.spinner('puppugeneraattori aktivoitu'):
             for response in client.chat.completions.create(
                 model=st.session_state["openai_model"],
                 messages=[

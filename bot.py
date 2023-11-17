@@ -4,7 +4,7 @@ from prompts import *
 
 client = OpenAI(api_key=st.secrets["apikey"])
 
-st.title("KurssiBot")
+st.title("KurssiBOT")
 
 # Set a default model
 if "openai_model" not in st.session_state:
